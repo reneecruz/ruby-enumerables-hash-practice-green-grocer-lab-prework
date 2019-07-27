@@ -20,24 +20,21 @@ end
 
 
 def apply_coupons(cart, coupons)
-  coupons_applied_hash = {}
   
   coupons.each do |coupon|
     item = coupon[:item]
+    if cart[item] && cart[item][:count] >= coupon[:num]  
       
-   if cart[item] 
-      cart[item][:count] += 1 
-      
-    else cart[item][:count] >= coupon[:num] 
-
-        cart["#{item} W/COUPON"] ||= {}
-        cart["#{item} W/COUPON"][:price] ||= coupon[:cost] / coupon[:num] 
-        cart["#{item} W/COUPON"][:clearance] ||= cart[item][:clearance] 
-        cart["#{item} W/COUPON"][:count] ||= cart[item][:count]
-          if cart[item][:count] == coupon[:num]
-            cart[item][:count] = cart[item][:count] - coupon[:num]
-          end
-    end
+      if cart["#{item} W/COUPON"]
+         cart["#{item} W/COUPON"][:count] += coupon[:num]
+        
+      else 
+          cart["#{item} W/COUPON"] = { 
+            price: coupon[:cost] / coupon[:num],
+            clearance: cart[item][:clearance],
+            count: coupon[:num]
+          }
+      end
   end
   cart
 end
