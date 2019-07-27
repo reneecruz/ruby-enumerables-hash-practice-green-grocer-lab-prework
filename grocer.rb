@@ -26,7 +26,8 @@ def apply_coupons(cart, coupons)
     item = coupon[:item]
       
       if cart[item]
-        cart["#{item} W/COUPON"] = value
+        cart["#{item} W/COUPON"] ||= {}
+        
       end
       
     end
