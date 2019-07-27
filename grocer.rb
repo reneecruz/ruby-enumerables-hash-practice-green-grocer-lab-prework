@@ -25,10 +25,11 @@ def apply_coupons(cart, coupons)
   coupons.each do |coupon|
     item = coupon[:item]
       
-      if cart[item]
-        cart[item][:count] >= coupon[:num] 
-        cart[item][:count] % 2 == 0
-          
+   if cart[item] 
+      cart[item][:count] += 1 
+      
+    else cart[item][:count] >= coupon[:num] 
+
         cart["#{item} W/COUPON"] ||= {}
         cart["#{item} W/COUPON"][:price] ||= coupon[:cost] / coupon[:num] 
         cart["#{item} W/COUPON"][:clearance] ||= cart[item][:clearance] 
@@ -36,7 +37,7 @@ def apply_coupons(cart, coupons)
           if cart[item][:count] == coupon[:num]
             cart[item][:count] = cart[item][:count] - coupon[:num]
           end
-      end
+    end
   end
   cart
 end

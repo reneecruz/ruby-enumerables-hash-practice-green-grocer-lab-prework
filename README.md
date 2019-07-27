@@ -1,4 +1,4 @@
-I'v# Green Grocer
+# Green Grocer
 
 ## Learning Goals
 
