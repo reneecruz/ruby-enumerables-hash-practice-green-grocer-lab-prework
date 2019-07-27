@@ -26,13 +26,15 @@ def apply_coupons(cart, coupons)
     
     item_hash.each do |key, value|
       
-      if item_hash.value?(value) == cart.key?(key)
-        coupons_applied_hash[key]
-        binding.pry
+      if item_hash[:item].value?(value) == cart.key?(key)
+        coupons_applied_hash[key] = item_hash[:item].value
+       
       end
+      
     end
+    
   end
-  
+   binding.pry
 end
 
 def apply_clearance(cart)
