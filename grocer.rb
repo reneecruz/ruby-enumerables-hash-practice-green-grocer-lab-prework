@@ -50,7 +50,7 @@ def apply_clearance(cart)
       original_price = cart[item][:price]
       discounted_price = discount * original_price
     
-        cart[item][:price] = discounted_price
+        cart[item][:price] = discounted_price.round
      end
         binding.pry
     end 
