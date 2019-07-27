@@ -1,3 +1,5 @@
+require "pry"
+
 def consolidate_cart(cart)
   cart_hash = {}
 
@@ -18,7 +20,19 @@ end
 
 
 def apply_coupons(cart, coupons)
-  # code here
+  coupons_applied_hash = {}
+  
+  coupons.each do |item_hash|
+    
+    item_hash.each do |key, value|
+      
+      if item_hash.value?(value) == cart.key?(key)
+        coupons_applied_hash[key]
+        binding.pry
+      end
+    end
+  end
+  
 end
 
 def apply_clearance(cart)
