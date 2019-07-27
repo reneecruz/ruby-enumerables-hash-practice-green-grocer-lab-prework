@@ -24,14 +24,8 @@ def apply_coupons(cart, coupons)
   
   coupons.each do |coupon|
     item = coupon[:item]
-    coupon.each do |key, value|
       
-      if item_hash[:item].value?(value) == cart.key?(key)
-        coupons_applied_hash[key] = item_hash[:item].value
-      
-      if item_hash.key?(key)
-        coupons_applied_hash[key] = value
-
+      if cart[:item]
       end
       
     end
