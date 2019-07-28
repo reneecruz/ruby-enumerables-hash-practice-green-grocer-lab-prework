@@ -69,7 +69,7 @@ def checkout(cart, coupons)
         cart_total += value[:price] * value[:count]
     end
 
-  cart_total > 100 ? (cart_total * 0.90) : cart_total # This is the short way!
+  cart_total > 100 ? (cart_total * 0.90) : cart_total # This is the short way! Refactor of below:
   
   # This is the long way!
   # if cart_total > 100.00
