@@ -73,6 +73,16 @@ def checkout(cart, coupons)
 
     #cart_total = item_name
       #item_name.reduce(0) {|sum, indv| sum + indv}
+ 
+  cart.each do |item_name|
+        
+    cart[item_name][:price] * cart[item_name][:count]
+   binding.pry
+    item_name.each do 
+  
+    cart_total = item_name
+      item_name.reduce(0) {|sum, indv| sum + indv}
+    end
   end
   
  
