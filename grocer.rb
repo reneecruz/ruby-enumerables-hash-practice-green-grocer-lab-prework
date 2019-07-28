@@ -69,10 +69,12 @@ def checkout(cart, coupons)
         cart_total += value[:price] * value[:count]
     end
 
-  if cart_total > 100.00
-    apply_discount = cart_total * 0.10
-    discounted_cart_total = cart_total - apply_discount
-    cart_total = discounted_cart_total
-  end
-  cart_total
+  cart_total > 100 ? (cart_total * 0.90) : cart_total
+  
+  # if cart_total > 100.00
+  #   apply_discount = cart_total * 0.10
+  #   discounted_cart_total = cart_total - apply_discount
+  #   cart_total = discounted_cart_total
+  # end
+  #cart_total
 end 
