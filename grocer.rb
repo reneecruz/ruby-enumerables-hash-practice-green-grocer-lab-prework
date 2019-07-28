@@ -71,25 +71,12 @@ def checkout(cart, coupons)
         #cart[item_name][:price] * cart[item_name][:count]
       end
 
-    #cart_total = item_name
+      #cart_total = item_name
       #item_name.reduce(0) {|sum, indv| sum + indv}
- 
-  cart.each do |item_name|
-        
-    cart[item_name][:price] * cart[item_name][:count]
-   binding.pry
-    item_name.each do 
   
-    cart_total = item_name
-      item_name.reduce(0) {|sum, indv| sum + indv}
-    end
-  end
-  
- 
   if cart_total >= 100.00.round(2)
     apply_discount = cart_total * 0.10.round(2)
     discounted_cart_total = cart_total - apply_discount
     cart_total = discounted_cart_total
   end
- 
 end 
