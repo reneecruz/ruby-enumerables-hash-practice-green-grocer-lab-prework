@@ -41,6 +41,7 @@ def apply_coupons(cart, coupons)
   cart
 end
 
+
 def apply_clearance(cart)
    
     cart.each do |item_name, values|
@@ -53,19 +54,22 @@ def apply_clearance(cart)
         new_discounted_price = (original_price - discount_amount).round(2)
         values[:price] = new_discounted_price.round(2)
       end
-  end
+    end
 end
 
 def checkout(cart, coupons)
   
   consolidate_cart(cart)
  
-  cart.each do |item_name|
+  cart.each do |item_name, values|
+    values[:price] * values[:count]
+    item_name.each do 
+     binding.pry
     cart_total = item_name
       item_name.reduce(0) {|sum, indv| sum + indv}
   end
   
-  binding.pry
+ 
   if cart_total >= 100.00.round(2)
     apply_discount = cart_total * 0.10.round(2)
     discounted_cart_total = cart_total - apply_discount
@@ -73,4 +77,4 @@ def checkout(cart, coupons)
   end
   apply_coupons
   apply_clearance
-end
+end 
