@@ -43,25 +43,18 @@ end
 
 def apply_clearance(cart)
    
-  #if cart.key?(:clearance) == true
-    
-    cart.each do |item|
-      item.each do |key, value|
-      
-        if cart[item][:clearance] = !false
-        #binding.pry
-        original_price = cart[item][:price].round(2)
-        discount_rate = 0.20.round(2)
-      
-        discount_amount = (discount_rate * original_price).float.round(2)
+    cart.each do |item_name, values|
+      #item.each do |key, value|
         
-        new_discounted_price = (original_price - discount_amount).float.round(2)
-     
-     cart[item][:price] = new_discounted_price.round(2)
+      if values[:clearance] 
+        original_price = values[:price].round(2)
+        discount_rate = 0.20.round(2)
+        discount_amount = (discount_rate * original_price).round(2)
+        
+        new_discounted_price = (original_price - discount_amount).round(2)
+        values[:price] = new_discounted_price.round(2)
       end
-    end 
   end
-    cart 
 end
 
 def checkout(cart, coupons)
