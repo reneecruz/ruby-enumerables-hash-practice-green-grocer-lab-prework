@@ -60,13 +60,19 @@ end
 def checkout(cart, coupons)
   
   consolidate_cart(cart)
- 
-  cart.each do |item_name, values|
-    values[:price] * values[:count]
-    item_name.each do 
-     binding.pry
-    cart_total = item_name
-      item_name.reduce(0) {|sum, indv| sum + indv}
+  apply_coupons(cart, coupons)
+  apply_clearance(cart)
+  
+  cart_total = []
+  cart.each do |item_name|
+     item_name.each do |item_name, value|
+        cart_total = value[:price] * value[:count]
+            #binding.pry
+        #cart[item_name][:price] * cart[item_name][:count]
+      end
+
+    #cart_total = item_name
+      #item_name.reduce(0) {|sum, indv| sum + indv}
   end
   
  
@@ -75,6 +81,5 @@ def checkout(cart, coupons)
     discounted_cart_total = cart_total - apply_discount
     cart_total = discounted_cart_total
   end
-  apply_coupons
-  apply_clearance
+ 
 end 
